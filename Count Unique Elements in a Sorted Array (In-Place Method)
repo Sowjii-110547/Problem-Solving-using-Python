@@ -1,0 +1,7 @@
+arr=list(map(int,input("Enter array elements: ").split()))
+i=0
+for j in range(len(arr)):
+    if arr[i]!=arr[j]:
+        i+=1
+        arr[i]=arr[j]
+print("Number of unique elements:",i+1)
