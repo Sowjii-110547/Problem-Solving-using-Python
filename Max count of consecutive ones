@@ -1,0 +1,10 @@
+arr=list(map(int,input("Enter array elements: ").split()))
+max_count=0
+count=0
+for i in arr:
+    if i==1:
+        count+=1
+    else:
+        count=0
+    max_count=max(max_count,count)
+print("Max count of consecutive ones:",max_count)
