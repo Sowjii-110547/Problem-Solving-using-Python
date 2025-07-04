@@ -1,0 +1,17 @@
+# Given an integer array nums, find a subarray that has the largest product, and return the product.
+#Input: nums = [2,3,-2,4]
+#Output: 6
+#Explanation: [2,3] has the largest product 6.
+nums=list(map(int,input("Enter array elements: ").split()))
+prefix=1
+sufix=1
+maxi=nums[0]
+for i in range(len(nums)):
+    if prefix==0:
+        prefix=1
+    if sufix==0:
+        sufix=1
+    prefix*=nums[i]
+    sufix*=nums[len(nums)-i-1]
+    maxi=max(maxi,prefix,sufix)
+print(maxi)
