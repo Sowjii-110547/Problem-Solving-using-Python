@@ -1,0 +1,15 @@
+nums=list(map(int,input("Enter array elements: ").split()))
+target=int(input("Enter target value: "))
+low=0
+high=len(nums)-1
+while low<=high:
+    mid=(low+high)//2
+    if target==nums[mid]:
+        print("Target is present at the index:",mid)
+        break
+    elif target>nums[mid]:
+        low=mid+1
+    elif target<nums[mid]:
+        high=mid-1
+else:
+    print("Target not found")
