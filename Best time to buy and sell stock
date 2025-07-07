@@ -1,0 +1,10 @@
+prices = [7,1,5,3,6,4]
+profit=0
+mini=prices[0]
+for i in range(len(prices)):
+    # if we are selling on the ith day, then definetly we bought it for minimum price from 1st to (i-1)th day
+    profit_getting=prices[i]-mini  # calculating profit
+    profit=max(profit,profit_getting) # keep track of maximum profit
+    mini=min(mini,prices[i]) # keep track of minimum price to buy stock
+print(profit)
+    
