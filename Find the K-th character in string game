@@ -12,4 +12,4 @@ while len(word)<=k:
     x="".join(chr(ord(j)+1) for j in word)
     word+=x
 print(word)
-print(word[k-1])
+print("The kth character in word is:",word[k-1])
