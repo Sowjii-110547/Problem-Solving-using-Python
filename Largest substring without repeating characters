@@ -1,0 +1,11 @@
+s=input("Enter string: ")
+maxi=0
+res=""
+for i in s:
+    if i in res:
+        index=res.index(i)
+        res=res[index+1:]+i
+    else:
+        res+=i
+    maxi=max(len(res),maxi)
+print("length of largest substring without repeating characters is:",maxi)
