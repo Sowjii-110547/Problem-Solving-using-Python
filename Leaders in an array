@@ -1,0 +1,9 @@
+nums=list(map(int,input("Enter elements: ").split()))
+res=[]
+maxi=float('-inf')
+for i in range(len(nums)-1,-1,-1):
+    if nums[i]>maxi:
+        maxi=nums[i]
+        res.append(nums[i])
+print("Leaders in a given array is: ",res[::-1])
+            
