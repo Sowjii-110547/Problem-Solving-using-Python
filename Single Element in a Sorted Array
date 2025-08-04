@@ -1,0 +1,44 @@
+nums = [1,1,2,3,3,4,4,8,8]  # Input: sorted list where every element appears twice except one
+n = len(nums)  # Store the length of the array
+
+# Edge case 1: If the array has only one element, return it
+if n == 1:
+    print(nums[0])
+    exit()
+
+# Edge case 2: If the first element is unique (not equal to second), return it
+if nums[0] != nums[1]:
+    print(nums[0])
+    exit()
+
+# Edge case 3: If the last element is unique (not equal to second last), return it
+if nums[-1] != nums[-2]:
+    print(nums[-1])
+    exit()
+
+# Binary search initialization: skip first and last because already checked
+low = 1
+high = n - 2
+
+# Perform binary search to find the unique element
+while low <= high:
+    mid = (low + high) // 2  # Find the middle index
+    # Check if mid is the unique element by comparing with neighbors
+    if nums[mid] != nums[mid - 1] and nums[mid] != nums[mid + 1]:
+        print(nums[mid])  # Found the single element
+        break
+
+    # Decide which half to discard based on pattern:
+    #for left half
+    # Case 1: mid is odd and equal to the previous element
+    # Case 2: mid is even and equal to the next element
+    if ((mid % 2 == 1 and nums[mid] == nums[mid - 1]) or
+        (mid % 2 == 0 and nums[mid] == nums[mid + 1])):
+        low = mid + 1  # Unique element is in the right half
+    # for right half
+    else:
+        high = mid - 1  # Unique element is in the left half
+
+# Fallback (in case no unique element is found, though not needed for valid input)
+else:
+    print(-1)
