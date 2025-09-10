@@ -1,0 +1,46 @@
+""" Description:
+Koko loves to eat bananas. There are n piles of bananas, where the i-th pile has piles[i] bananas.
+Koko eats bananas at a constant speed of k bananas per hour.
+If a pile has less than or equal to k bananas, she eats the entire pile in 1 hour.
+If a pile has more than k bananas, she still spends 1 full hour but only eats up to k bananas.
+In other words, to finish a pile of size x, she needs ceil(x / k) hours.
+Koko wants to finish all the bananas in at most h hours.
+👉 Your task is to find the minimum integer value of k (eating speed) that allows Koko to finish all the bananas within h hours.
+"""
+
+
+import math
+
+# Helper function to calculate total hours needed 
+# if Koko eats at a given speed (hours = eating speed/ how many bananas do koko eats per hour)
+def calculate(arr, hours):
+    totalhours = 0
+    # For each pile of bananas, calculate the hours needed (rounded up)
+    for i in range(len(arr)):
+        totalhours += math.ceil(arr[i] / hours)
+    return totalhours
+
+# Input: piles of bananas and total hours available
+piles = [3, 6, 7, 11]
+h = 8
+
+# Result initialized as infinity (to find the minimum speed)
+res = float('inf')
+
+# Search space for possible eating speeds: [1, max pile size]
+low = 1
+high = max(piles)
+
+# Binary search to find the minimum valid eating speed
+while low <= high:
+    mid = (low + high) // 2  # Middle speed
+    
+    # If Koko can finish within 'h' hours at this speed
+    if calculate(piles, mid) <= h:
+        res = min(mid, res)   # Update result with smaller valid speed
+        high = mid - 1        # Try to find an even smaller speed
+    else:
+        low = mid + 1         # Increase speed (mid too slow)
+
+# Final answer: minimum eating speed
+print(res)  # Expected output: 4
