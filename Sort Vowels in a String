@@ -1,0 +1,32 @@
+""" Description:
+You are given a string s. You need to rearrange it into a new string t by following these rules:
+Consonants don’t move → They must stay in the exact same positions as in the original string.
+Vowels get sorted → Take out all vowels (a, e, i, o, u in both uppercase and lowercase), sort them by their ASCII values (uppercase come before lowercase), and put them back into the vowel positions.
+Finally, return the new string.
+
+Example 1
+Input: "lEetcOde"
+Vowels: E, e, O, e → sorted: E, O, e, e
+Put them back into vowel spots → "lEOtcede"
+
+Example 2
+Input: "lYmpH"
+No vowels → nothing changes
+Output: "lYmpH"
+"""
+
+s = "lEetcOde"
+vowels=[i for i in s if i in 'AEIOUaeiou']
+vowels=sorted(vowels)
+res=[]
+j=0
+for i in s:
+    if i in 'AEIOUaeiou':
+        res.append(vowels[j])
+        j+=1
+    else:
+        res.append(i)
+print("".join(res))
+        
+
+    
