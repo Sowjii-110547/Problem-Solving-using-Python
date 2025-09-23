@@ -1,0 +1,38 @@
+"""Description: 
+You are given two version strings (e.g., "1.2" and "1.10"). Each version is split by "." into revisions, and each revision is compared as an integer (ignoring leading zeros).
+Compare revisions from left to right.
+If one version has fewer revisions, treat the missing parts as 0.
+Return:
+-1 if version1 < version2
+1 if version1 > version2
+0 if they are equal
+Example:
+"1.2" vs "1.10" → compare 2 and 10 → return -1.
+"1.01" vs "1.001" → both become 1 → return 0.
+"1.0" vs "1.0.0.0" → missing parts are 0 → return 0.
+"""
+def compareVersion(version1: str, version2: str) -> int:
+    
+    # Convert version strings into lists of integers
+    v1 = list(map(int, version1.split(".")))
+    v2 = list(map(int, version2.split(".")))
+
+    # Pad the shorter list with zeros so they have equal length
+    while len(v1) < len(v2):
+        v1.append(0)
+    while len(v2) < len(v1):
+        v2.append(0)
+
+    # Compare each revision one by one
+    for a, b in zip(v1, v2):
+        if a < b:
+            return -1   # version1 is smaller
+        elif a > b:
+            return 1    # version1 is larger
+
+    # If all revisions are equal, return 0
+    return 0
+# Example test cases
+print(compareVersion("1.2", "1.10"))    # Output: -1
+print(compareVersion("1.01", "1.001"))  # Output: 0
+print(compareVersion("1.0", "1.0.0.0")) # Output: 0
