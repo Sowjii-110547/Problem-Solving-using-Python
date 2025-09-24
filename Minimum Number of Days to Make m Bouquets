@@ -1,0 +1,57 @@
+""" Description:
+You are given an array bloomDay, where bloomDay[i] is the day the i-th flower blooms.
+To make one bouquet, you need k adjacent bloomed flowers. You want to make exactly m bouquets.
+Return the minimum number of days needed to make m bouquets.
+If it’s not possible (not enough flowers), return -1.
+Examples
+bloomDay = [1,10,3,10,2], m=3, k=1 → Output: 3
+By day 3, at least 3 flowers are bloomed, enough for 3 bouquets.
+
+bloomDay = [1,10,3,10,2], m=3, k=2 → Output: -1
+Need 6 flowers, but only 5 exist → impossible.
+
+bloomDay = [7,7,7,7,12,7,7], m=2, k=3 → Output: 12
+By day 7, only one valid bouquet of 3 adjacent flowers is possible.
+By day 12, all flowers bloom, so 2 bouquets are possible.
+"""
+
+# Helper function to check if it's possible to make m bouquets in 'day' days
+def possible(arr, day, m, k):
+    count = 0       # to count consecutive bloomed flowers
+    boques = 0      # to count number of bouquets formed
+    for i in range(len(arr)):
+        if arr[i] <= day:   # flower has bloomed by 'day'
+            count += 1
+        else:
+            # streak of consecutive bloomed flowers ends
+            boques += (count // k)  
+            count = 0       # reset streak
+    # add leftover streak (if last flowers are bloomed consecutively)
+    boques += (count // k)
+    
+    # return True if at least m bouquets can be made
+    return boques >= m
+# Input
+bloomDay = [1, 10, 3, 10, 2]
+m = 3   # number of bouquets needed
+k = 1   # flowers required in each bouque
+# Binary search boundaries (earliest and latest bloom days)
+low = min(bloomDay)
+high = max(bloomDay)
+ans = high   # initialize answer to maximum bloom da
+# Binary search to find the minimum number of days
+while low <= high:
+    # quick check: not enough flowers in total
+    if len(bloomDay) < m * k:
+        print(-1)
+        exit()
+    else:
+        mid = (low + high) // 2  # mid = candidate day
+        # check if possible to make m bouquets by 'mid' days
+        if possible(bloomDay, mid, m, k):
+            ans = mid        # update answer
+            high = mid - 1   # try smaller days
+        else:
+            low = mid + 1    # need more days
+# Final result: minimum number of days required
+print(ans)
