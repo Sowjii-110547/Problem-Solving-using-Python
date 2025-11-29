@@ -1,0 +1,26 @@
+""" Description:
+You are given an integer array nums and an integer k. You can perform the following operation any number of times:
+Select an index i and replace nums[i] with nums[i] - 1.
+Return the minimum number of operations required to make the sum of the array divisible by k.
+Example 1:
+nums = [5, 8, 3]
+k = 4
+Explanation:
+Sum = 5 + 8 + 3 = 16
+16 % 4 = 0
+Example 2: 
+nums = [3, 7, 2]
+k = 5
+Explanation:
+Sum = 12
+12 % 5 = 2
+We need to subtract 1 for two times (from any numbers) to make the sum = 10
+10 % 5 = 0
+"""
+
+nums = [3,9,7]
+k = 5
+s=sum(nums)
+print(s%k)
+# if sum divisible by k, it returns zero 
+# else if sum doesnot divisible by k, it leaves a remainder that tells how many times 1 need to get subtracted.
