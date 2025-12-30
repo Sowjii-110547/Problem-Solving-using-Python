@@ -1,0 +1,15 @@
+""" Description: 
+You are given a string num that represents a non-negative integer.
+Your task is to return the largest odd number that can be formed as a prefix of the given string.
+Important rules:
+The result must be a substring starting from index 0
+The number must be odd → its last digit must be odd
+If no odd number prefix exists, return an empty string
+"""
+num="10133890"
+for i in range(len(num)-1,-1,-1):
+    if int(num[i])%2!=0:
+        print(str(num[0:i+1]))
+        break
+else:
+    print("")
