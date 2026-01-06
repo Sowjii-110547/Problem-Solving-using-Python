@@ -1,0 +1,42 @@
+""" Description: 
+You are given an array of integers.
+For each number in the array:
+Find all of its positive divisors
+If the number has exactly four distinct divisors, add the sum of those divisors to the final answer
+Ignore numbers that do not have exactly four divisors
+Return the final sum.
+Example 1:
+Input: nums = [21,4,7]
+Output: 32
+Explanation: 
+21 has 4 divisors: 1, 3, 7, 21
+4 has 3 divisors: 1, 2, 4
+7 has 2 divisors: 1, 7
+The answer is the sum of divisors of 21 only.
+
+Example 2:
+Input: nums = [21,21]
+Output: 64
+
+Example 3:
+Input: nums = [1,2,3,4,5]
+Output: 0 
+"""
+
+import math
+def factors(n):
+    res=set()
+    for i in range(1,int(math.sqrt(n))+1):
+        if n%i==0:
+            res.add(i)
+            res.add(n//i)
+    return res
+nums = [1,2,3,4,5]
+summ=0
+for i in nums:
+    if len(factors(i))==4:
+        summ+=sum(factors(i))
+    else:
+        continue
+print(summ)
+   
