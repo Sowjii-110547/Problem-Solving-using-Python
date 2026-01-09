@@ -1,0 +1,46 @@
+""" Descrption: 
+Given two strings s and t, determine if they are isomorphic.
+
+Two strings s and t are isomorphic if the characters in s can be replaced to get t.
+
+All occurrences of a character must be replaced with another character while preserving the order of characters. No two characters may map to the same character, but a character may map to itself.
+Example 1:
+Input: s = "egg", t = "add"
+Output: true
+Explanation:
+The strings s and t can be made identical by:
+Mapping 'e' to 'a'.
+Mapping 'g' to 'd'.
+
+Example 2:
+s = "badc", t = "baba"
+Output: false
+Explanation: 
+b->b
+a->a
+d->b
+here b is already mapped to b so i cant allow to map another alphabet like 'b so it returns false
+"""
+Source code:
+s = "badc"
+t = "baba"
+dictt={}
+used=set()
+for i,j in zip(s,t):
+    if i in dictt:
+        if dictt[i]!=j:
+            print("false")
+            exit()
+    else:
+        if j in used:
+            print("false")
+            exit()
+        dictt[i]=j
+        used.add(j)
+print("true")
+
+Source code-2 :
+s = "paper"
+t = "title"
+a=set(zip(s,t))
+print(len(a)==len(set(s))==len(set(t)))
