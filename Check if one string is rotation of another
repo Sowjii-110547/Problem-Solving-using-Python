@@ -1,0 +1,38 @@
+""" Description: 
+ Given two strings s and goal, return true if and only if s can become goal after some number of shifts on s.
+A shift on s consists of moving the leftmost character of s to the rightmost position. For example, if s = "abcde", then it will be "bcdea" after one shift.
+Example 1:
+Input: s = "abcde", goal = "cdeab"
+Output: true
+
+Example 2:
+Input: s = "abcde", goal = "abced"
+Output: false
+"""
+Source code-1:
+s = "abcde"; goal = "cdeab"
+s=list(s)
+goal=list(goal)
+for i in range(len(s)):
+    #s.append(s[0])
+    #s.pop(0)
+    temp=s[0]
+    for i in range(1,len(s)):
+        s[i-1]=s[i]
+    s[-1]=temp
+    if s==goal:
+        print("true")
+        exit()
+else:
+    print("false")
+
+
+Source Code-2:
+s = "abcde"; goal = "cdeab"
+for i in range(len(s)):
+    if s==goal:
+        print("True")
+        exit() 
+    s=s[1:]+s[0]
+else:
+    print("False")
