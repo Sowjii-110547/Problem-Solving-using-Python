@@ -1,0 +1,26 @@
+""" Description:
+Given two strings s and t, return true if t is an anagram of s, and false otherwise.
+Example 1:
+Input: s = "anagram", t = "nagaram"
+Output: true
+
+Example 2:
+Input: s = "rat", t = "car"
+Output: false
+"""
+Source code-1:
+s = "rat"; t = "car"
+if len(s)!=len(t):
+    print("false")
+    exit()
+a=set(s)
+for i in a:
+    if s.count(i)!=t.count(i):
+        print("false")
+        exit()
+print("true")
+
+Source code-2:
+s = "anagram"
+t = "nagaram"
+print(sorted(s)==sorted(t))
