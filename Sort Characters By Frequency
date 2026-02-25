@@ -1,0 +1,25 @@
+# problem number 451 from leetcode
+Source code:
+s = "Aabb"
+freq={}
+res=""
+for i in s:
+    if i in freq:
+        freq[i]+=1
+    else:
+        freq[i]=1
+print(freq)
+# print(sorted(freq.items())) o/p: [('A', 1), ('a', 1), ('b', 2)]
+for k,v in sorted(freq.items(),key=lambda x:x[1],reverse=True):
+    res+=k*v
+print(res)
+
+"""description: 
+* sorted() syntax :  sorted(iterable, key=None, reverse=False)
+* sorted() by default sorts tuples by the first element, not "alphabetically" specifically. Since your first element is a character, it appears alphabetical.
+* "key=" in the syntax says that "on what basis should i sort?.
+* lambda x: x[1]
+      each tuple in the list goes to the lambda function. As we have coded x[1], lambda function works on freqency. 
+* reverse=True 
+      we want a key with highest frequency first so, we coded reverse=True. This aligns the list of tuple in descending order based on the value frequency.
+"""
