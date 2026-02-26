@@ -1,0 +1,27 @@
+Problem number 13 from leetcode 
+source code-1: 
+s = "MCMXCIV"
+roman={'I':1,'V':5,'X':10,'L':50,'C':100,'D':500,'M':1000}
+i=0
+res=0
+while i<len(s):
+    if i+1<len(s) and roman[s[i]]<roman[s[i+1]]: # checking current value is smaller than the next value 
+        diff=roman[s[i+1]]-roman[s[i]]
+        res+=diff 
+        i+=2 # here we perform subtraction between 2 symbols so, we skip two digits inorder to  not re calculate the subtracted part
+    else:
+        res+=roman[s[i]]
+        i+=1
+print(res)
+
+source code-2: 
+s = "MCMXCIV"
+roman={'I':1,'V':5,'X':10,'L':50,'C':100,'D':500,'M':1000}
+i=0
+res=0
+for i in range(len(s)):
+  if i+1<len(s) and roman[s[i]]<roman[s[i+1]]:
+    res-=roman[s[i]]
+  else:
+    res+=roman[s[i]]
+print(res)
