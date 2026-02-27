@@ -1,0 +1,20 @@
+# check if the number is armstrong is not 
+input: 153                                                   input: 12
+output: True                                                 outpt: False 
+Explanation: Number of digits : 3.                           Explanation: Number of digits : 2.                                       
+1^3 + 5^3 + 3^3 = 1 + 125 + 27 = 153.                        1^2 + 2^2 = 1 + 4 = 5.
+Therefore, it is an Armstrong number.                        Therefore, it is not an Armstrong number.
+
+source code:
+n=12
+l=len(str(n))
+temp=n
+res=0
+while n>0:
+    r=n%10 
+    res+=r**l
+    n=n//10 
+if res==temp:
+    print("True")
+else:
+    print("False")
