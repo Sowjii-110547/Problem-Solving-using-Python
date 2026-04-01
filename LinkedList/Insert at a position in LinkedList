@@ -1,0 +1,52 @@
+class Node:
+    def __init__(self,data):
+        self.data=data 
+        self.next=None 
+class LinkedList:
+    def __init__(self):
+        self.head=None
+    def insertnode(self,data):
+        newnode=Node(data)
+        if self.head is None:
+            self.head=newnode
+        else:
+            temp=self.head 
+            while temp.next is not None:
+                temp=temp.next 
+            temp.next=newnode
+    def display(self):
+        temp=self.head 
+        print("Linked list elements are:")
+        while temp is not None:
+            print(temp.data,end=" ")
+            temp=temp.next 
+    def length_linkedlist(self):
+        count=0
+        temp=self.head 
+        while temp:
+            count+=1
+            temp=temp.next
+        return count
+    def insertposition(self,data):
+        index=int(input("enter position you want to insert:",))
+        if index>self.length_linkedlist():
+            print("index is out of range")
+            return
+        temp=self.head 
+        count=1
+        while count!=index-1:
+            temp=temp.next
+            count+=1
+        newnode=Node(data)
+        newnode.next=temp.next
+        temp.next=newnode
+ob=LinkedList()
+ob.insertnode(10)
+ob.insertnode(20)
+ob.insertnode(30)
+ob.insertnode(40)
+ob.insertposition(70)
+print("Linked list length is :",ob.length_linkedlist())
+ob.display()
+    
+            
