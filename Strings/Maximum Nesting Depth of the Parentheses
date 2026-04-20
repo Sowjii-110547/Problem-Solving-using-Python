@@ -24,7 +24,21 @@ s consists of digits 0-9 and characters '+', '-', '*', '/', '(', and ')'.
 It is guaranteed that parentheses expression s is a VPS.
 
 """
-source code:
+Source code 1: 
+s = "()(())((()()))"
+count=0
+maxi=00
+for i in range(len(s)):
+    print(s[i])
+    if s[i]=='(': 
+        count+=1
+    if s[i]==')':
+        count-=1
+    maxi=max(maxi,count)
+print(maxi)
+
+
+source code 2:
 s = "(1)+((2))+(((3)))"
 maxi=0
 for i,ch in enumerate(s):   # enumerate return index and the indexed value.
