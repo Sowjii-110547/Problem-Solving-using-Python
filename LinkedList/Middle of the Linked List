@@ -1,0 +1,55 @@
+# problem no. 876 in leetcode
+""" description: 
+Given the head of a singly linked list, return the middle node of the linked list.
+If there are two middle nodes, return the second middle node.
+"""
+source code:
+class Node:
+    def __init__(self,data):
+        self.data=data
+        self.next=None 
+class LinkedList:
+    def __init__(self):
+        self.head=None
+    def insertnode(self,data):
+        newnode=Node(data)
+        if self.head==None:
+            self.head=newnode
+        else:
+            temp=self.head
+            while temp.next is not None:
+                temp=temp.next
+            temp.next=newnode
+    def display(self):
+        temp=self.head
+        while temp is not None:
+            print(temp.data,end=" ")
+            temp=temp.next
+    def find_middle_element(self):
+           """
+            The concept for finding middle element is:
+            Take two pointers:
+            1. Fast pointer
+            2. Slow pointer
+        
+            If fast pointer moves two times,
+            slow pointer moves one time.
+        
+            As fast pointer reaches the end,
+            slow pointer will be at the middle
+            of the linked list.
+           """
+        fp=self.head
+        sp=self.head
+        while fp!=None and fp.next!=None:  # checking if the fp is not none and the fp.next is also not none for movinf two steps.
+            fp=fp.next.next
+            sp=sp.next
+        return sp
+ob=LinkedList()
+ob.insertnode(10)
+ob.insertnode(20)
+ob.insertnode(30)
+ob.display()
+print()
+middle=ob.find_middle_element()
+print("middle element is :",middle.data)
