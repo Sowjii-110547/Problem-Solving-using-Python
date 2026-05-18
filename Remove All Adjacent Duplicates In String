@@ -1,0 +1,22 @@
+# problem no.1047 in leetcode
+
+"""
+The approach is:
+Create an empty stack.
+Traverse each character in the string one by one.
+For every character:
+Check whether the stack is not empty and the current character is equal to the top element of the stack.
+If both are same, remove the top element from the stack because adjacent duplicates are found.
+Otherwise, add the current character into the stack.
+After traversing the complete string, the stack contains the final string after removing all adjacent duplicates.
+""""
+
+Source Code:
+s = "azxxzy"
+stack=[]
+for i in range(len(s)):
+    if stack and s[i]==stack[-1]:
+        stack.pop()
+    else:
+        stack.append(s[i])
+print("".join(stack))
